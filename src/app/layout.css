@@ -1,11 +1,13 @@
 header {
     height: 100px;
-    background-color: #333333;
+    background-color: #292929;
     position:fixed;
     top:0px;
     width:100%;
     z-index: 9999;
     left: 0px;
+    display: grid;
+    grid-template-areas: "logo header-buttons register";
 }
 
 header::after {
@@ -31,13 +33,59 @@ header::after {
     align-items: center;
     overflow: auto;
 }
+.header-buttons {
+    grid-area: header-buttons;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 9%;
+    margin-left: -40%;
+    order: 2;
+    width: 194%;
+}
+.header-buttons button {
+    display: inline;
+    width: 17%;
+    color:#F8C462;
+    background-color:transparent;
+    border: #333333;
+    font-size: 18px;
+}
+.header-buttons button:hover {
+    background-color: #F8C462;
+    color: #333333;
+    transition: background-color 0.2s, color 0.2s;
+}
 .sign-in{
-    margin-left: 87%;
-    margin-top: 1.8%;
+    grid-area: register;
+    margin-left: 60%;
+    margin-top: 3%;
     position: relative;
+    order: 3;
+}
+
+.logo {
+    grid-area: logo;
+    margin-left: 5%;
+    margin-top: 1%;
+    width: 200px;
+    order: 1;
+}
+.sign-in-button {
+    color:#F8C462;
+    background-color:transparent;
+    border: #333333;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 15px;
+}
+
+.sign-in-button:hover {
+    background-color: #F8C462;
+    color: #333333;
+    transition: background-color 0.2s, color 0.2s;
 }
 .sign-in button ~ button{
-    margin-left: 5%;
+    margin-top: 1%;
 }
 header button {
     width: 80px;
@@ -90,14 +138,49 @@ input {
     left:0;
     z-index: 9998;
     border-right: 3px solid black;
+    border-top: 3px solid black;
+}
+
+.profilebutton {
+    color:#F8C462;
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.profilebutton:hover {
+    background-color: #F8C462;
+    color: #333333;
+}
+
+.sidepanel-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.profile h2 {
+    color:#F8C462;
+    text-align: center;    
+    pointer-events: none;
 }
 
 .avatar {
     width: 200px;
     height: 200px;
     border: 4px solid black;
-    margin-left: 40px;
-    margin-top: 50px;
+    margin: 0 auto;
+    margin-top: 30px;
 }
 
 .games {
@@ -110,6 +193,41 @@ input {
     top: 100px;
     z-index: 9998;
     border-left: 3px solid black;
+    border-top: 3px solid black;
+}
+
+.sidepanel-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.game{
+    height: 40%;
+    width: 75%;
+    justify-content: left;
+}
+
+.game-name {
+    color: #F8C462;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.game-name:hover {
+    background-color: #F8C462;
+    color: #333333;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.game-desc {
+    color: #F8C462;
+    margin-left: 10%;
+    height: 5%;
 }
 
 .main {
