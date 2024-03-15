@@ -37,11 +37,11 @@ export default function RootLayout({
           <h1>VAMAEcologo</h1>
         </div>    
         <div className={'header-buttons'}>
-            <a href="/pages/main"><button>Main</button></a>
-            <a href="/pages/indev"><button>Currency</button></a>
-            <a href="/pages/indev"><button>About us</button></a>
-            <a href="/pages/indev"><button>Support us</button></a>
-            <a href="/pages/indev"><button>Contacts</button></a>
+            <a href="/main"><button>Main</button></a>
+            <a href="/indev"><button>Currency</button></a>
+            <a href="/indev"><button>About us</button></a>
+            <a href="/indev"><button>Support us</button></a>
+            <a href="/indev"><button>Contacts</button></a>
         </div>         
         <div className='sign-in'>
           <button  className={'sign-in-button'} onClick={toggleRegister}>Sign up</button>
