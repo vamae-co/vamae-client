@@ -37,7 +37,7 @@ export default function RootLayout({
           <h1>VAMAEcologo</h1>
         </div>    
         <div className={'header-buttons'}>
-            <a href="/main"><button>Main</button></a>
+            <a href="/news"><button>News</button></a>
             <a href="/indev"><button>Currency</button></a>
             <a href="/indev"><button>About us</button></a>
             <a href="/indev"><button>Support us</button></a>
