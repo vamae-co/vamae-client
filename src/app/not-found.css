@@ -1,0 +1,52 @@
+.not-found {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333333;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.not-found-message {
+        background-color:white;
+        width: 1440px;
+        height: 800px;
+        padding: 20px;
+        border-radius: 40px;
+        max-width: 80%;
+        text-align: center;
+        font-size: 24px;
+}
+
+.not-found-message h1 {
+    font-size: 70px;
+    margin: 0;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.not-found-message h2 {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.not-found-message h2 ~ h2 {
+    top: 50%;
+}
+
+a {
+    color: #F8C462;
+    text-decoration: none;
+}
