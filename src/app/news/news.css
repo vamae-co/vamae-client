@@ -1,0 +1,56 @@
+
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.clock {
+    text-align: right;
+    justify-content: right;
+    margin-right: 40px;
+    margin-top: -80px;
+    display: flex;
+}
+
+.clock p {
+    margin-top: -1px;
+    margin-right: 3px;
+}
+
+.news {
+    width: 1240px;
+    height: 200px;
+    border: 1px solid;
+    border-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 50px 30px 30px 100px;
+}
+
+.news h1 {
+    font-size: 20px;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.news-main {
+    display: inline;
+}
+
+.image {
+    width: 120px;
+    margin-left: 20px;
+    border: 1px solid black;
+}
+
+.desc {
+    margin-left: 200px;
+    margin-top: -125px;
+    font-size: 18px;
+    text-align: left;
+}
