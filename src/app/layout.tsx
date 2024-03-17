@@ -4,6 +4,8 @@ import './layout.css'
 import Image from 'next/image'
 import avatar from "./avatar.png"
 import React, { useState } from 'react'
+import SignUpForm from './components/signup/SignUpForm'
+import LoginForm from './components/login/LoginForm'
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,9 +25,7 @@ export default function RootLayout({
   const toggleLogin = () => {
     setLoginOpen(!isLoginOpen);
   }
- const handlePopupInnerClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-  }
+
 
   return (
     <html lang="en">
@@ -47,40 +47,14 @@ export default function RootLayout({
           <button  className={'sign-in-button'} onClick={toggleRegister}>Sign up</button>
               {isRegisterOpen && (
                 <div className='register' onClick={toggleRegister}>
-                  <div className='register-popup' onClick={handlePopupInnerClick}>
-                      <form>
-                      <h2>Sign Up</h2>
-                      <div className='input-boxes'>
-                          <h3>Email</h3>
-                          <input name='email' required type='email'size={50}></input>
-                          <br></br>
-                          <h3>Password</h3>
-                          <input name='password' required type='password' size={50}></input>
-                          <br></br>
-                          <br></br>
-                          <button type="submit">Sign up</button>      
-                      </div>
-                      </form>           
-                  </div>
+                  <SignUpForm/>
                 </div>
               )}
               <br></br>
             <button className={'sign-in-button'} onClick={toggleLogin}>Log in</button>
               {isLoginOpen && (
                 <div className='register' onClick={toggleLogin}>
-                  <div className='register-popup' onClick={handlePopupInnerClick}>
-                      <h2>Login</h2>
-                      <div className='input-boxes'>
-                          <h3>Email</h3>
-                          <input required type='email'size={50}></input>
-                          <br></br>
-                          <h3>Password</h3>
-                          <input required type='password' size={50}></input>
-                          <br></br>
-                          <br></br>
-                          <button type='submit'>Log in</button>      
-                      </div>           
-                  </div>
+                  <LoginForm/>
                 </div>
               )}
         </div>       
