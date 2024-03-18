@@ -88,7 +88,25 @@
         margin-top: 12px;
     }
     
+    
     .sign-in-button:hover {
+        background-color: #F8C462;
+        color: #333333;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .log-out-button {
+        color:#F8C462;
+        background-color:transparent;
+        border: #333333;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 15px;
+        margin-top: 12px;
+        margin-left: 30px;
+    }
+
+    .log-out-button:hover {
         background-color: #F8C462;
         color: #333333;
         transition: background-color 0.3s, color 0.3s;
@@ -278,6 +296,10 @@
         margin-top: 50px;
         align-self: center;
         background-color: #FCFCFC;
+    }
+
+    .main h1 {
+       text-align: center;
     }
 }
 

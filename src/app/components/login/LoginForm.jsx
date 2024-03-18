@@ -43,6 +43,10 @@ export default function RegisterForm() {
           localStorage.getItem('token')
       })
       .catch((error)=>console.log("User login failed", error));
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
   };
 
   return (

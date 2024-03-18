@@ -15,8 +15,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isAuthenticated = () => {
+    return !!localStorage.getItem('token');
+  };
   const [isRegisterOpen, setRegisterOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(isAuthenticated());
 
   const toggleRegister = () => {
     setRegisterOpen(!isRegisterOpen);
@@ -26,6 +30,14 @@ export default function RootLayout({
     setLoginOpen(!isLoginOpen);
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    setLoggedIn(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  };
 
   return (
     <html lang="en">
@@ -44,7 +56,9 @@ export default function RootLayout({
             <a href="/indev"><button>Contacts</button></a>
         </div>         
         <div className='sign-in'>
-          <button  className={'sign-in-button'} onClick={toggleRegister}>Sign up</button>
+          {!loggedIn && (
+            <>
+            <button  className={'sign-in-button'} onClick={toggleRegister}>Sign up</button>
               {isRegisterOpen && (
                 <div className='register' onClick={toggleRegister}>
                   <SignUpForm/>
@@ -57,6 +71,13 @@ export default function RootLayout({
                   <LoginForm/>
                 </div>
               )}
+              </>
+          )}
+          {loggedIn && (
+            <>
+            <button className={'log-out-button'} onClick={handleLogout}>Log out</button>
+            </>
+          )}   
         </div>       
         </header>
         <div className={'wrapper'}>
@@ -73,7 +94,7 @@ export default function RootLayout({
               </div>                                     
             </div>
             <div className={'main'}>
-              {children}           
+                {children}             
             </div>
             <div className={'games'}>
             <div className={'sidepanel-right'}>

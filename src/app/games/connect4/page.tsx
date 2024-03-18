@@ -4,7 +4,11 @@ import './connect4.css'
 import React, { useState } from 'react'
 
 export default function Connect4Page() {
+  const isAuthenticated = () => {
+    return !!localStorage.getItem('token');
+  };
   const [isInfoOpen, setInfoOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(isAuthenticated());
 
   const toggleInfo = () => {
     setInfoOpen(!isInfoOpen);
@@ -14,7 +18,9 @@ export default function Connect4Page() {
   }
   return (
     <div className='connect4-background'>
-      <div onClick={toggleInfo} className='info'>
+      {loggedIn && (
+          <>
+          <div onClick={toggleInfo} className='info'>
               {isInfoOpen && (
                 <div className='info-wrapper' onClick={toggleInfo}>
                   <div className='info-popup' onClick={handlePopupInnerClick}>
@@ -116,6 +122,11 @@ export default function Connect4Page() {
             </div>
         </div>   
       </div>
+          </>
+      )}
+      {!loggedIn && (
+        <h1>You need to log in!</h1>
+      )}
     </div>
   )
 }

@@ -42,6 +42,10 @@ export default function RegisterForm() {
           localStorage.getItem('token')
       })
       .catch((error)=>console.log("User sign up failed", error));
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
   };
 
   return (
