@@ -2,33 +2,25 @@
 
 import './loginform.css'
 import React, { useState} from "react";
-import { useRouter } from "next/navigation";
 import config from '@/app/app.config.js'
 
 export default function RegisterForm() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
- const handlePopupInnerClick = (e) => {
-    e.stopPropagation();
-  }
-
-  const router = useRouter();
+ const handlePopupInnerClick = (e) => e.stopPropagation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
-      setError("All fields are necessary.");
+      console.error("All fields are necessary.");
       return;
     }
-    console.log("ayayaaa")
+
     fetch(
         config.uri + "/auth/authenticate", {
           method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-          },
           body: JSON.stringify({
             username,
             password,
@@ -50,18 +42,18 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className='sign-up-window' onClick={handlePopupInnerClick}>
+    <div className='log-in-window' onClick={handlePopupInnerClick}>
         <form onSubmit={handleSubmit}>
         <h2>Log In</h2>
         <div className='input-boxes'>
             <h3>UserName</h3>
-            <input name='username' onChange={(e) => setUserName(e.target.value)} required type='text'size={50}></input>
+            <input name='username' onChange={(e) => setUserName(e.target.value)} required type='text' size={50}></input>
             <br></br>
             <h3>Password</h3>
             <input name='password' onChange={(e) => setPassword(e.target.value)} required type='password' size={50}></input>
             <br></br>
             <br></br>
-            <button type="submit">Log In</button>      
+            <button type="submit">Log In</button>
         </div>
         </form>           
     </div>

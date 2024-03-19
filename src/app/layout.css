@@ -188,9 +188,7 @@
         align-items: left;
         text-align: left;
         width: 70%;
-        margin: auto;
-        margin-top: 25px;
-        margin-right: 25%;
+        margin: 25px 25% auto auto;
     }
     
     .profile span {
@@ -211,8 +209,7 @@
         width: 200px;
         height: 200px;
         border: 4px solid black;
-        margin: 0 auto;
-        margin-top: 30px;
+        margin: 30px auto 0;
     }
     
     .games {
@@ -234,8 +231,7 @@
         align-items: center;
         text-align: left;
         width: 100%;
-        margin: auto;
-        margin-top: 25px;
+        margin: 25px auto auto;
     }
     
     .game{
@@ -292,8 +288,7 @@
         width:1440px;
         height: 900px;
         grid-area: main;
-        margin: auto;
-        margin-top: 50px;
+        margin: 50px auto auto;
         align-self: center;
         background-color: #FCFCFC;
     }
@@ -308,10 +303,10 @@
         height: 56px;
         background-color: #292929;
         position:fixed;
-        top:0px;
+        top:0;
         width:100%;
         z-index: 9999;
-        left: 0px;
+        left: 0;
         display: grid;
         grid-template-areas: "logo header-buttons register";
     }
@@ -476,9 +471,7 @@
         align-items: left;
         text-align: left;
         width: 70%;
-        margin: auto;
-        margin-top: 25px;
-        margin-right: 25%;
+        margin: 25px 25% auto auto;
     }
     
     .profile span {
@@ -492,15 +485,14 @@
     }
     
     .profile span ~ span {
-        margin-top: 0%;
+        margin-top: 0;
     }
     
     .avatar {
         width: 200px;
         height: 200px;
         border: 4px solid black;
-        margin: 0 auto;
-        margin-top: 30px;
+        margin: 30px auto 0;
     }
     
     .games {
@@ -523,8 +515,7 @@
         align-items: center;
         text-align: left;
         width: 100%;
-        margin: auto;
-        margin-top: 25px;
+        margin: 25px auto auto;
     }
     
     .game{
@@ -571,9 +562,8 @@
         width:1440px;
         height: 1024px;
         grid-area: main;
-        margin: auto;
         bottom: 0;
-        margin-top: 92.3px;
+        margin: 92.3px auto auto;
         align-self: center;
         background-color: #FCFCFC;
         overflow: auto;

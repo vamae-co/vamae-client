@@ -4,9 +4,7 @@ import './connect4.css'
 import React, { useState } from 'react'
 
 export default function Connect4Page() {
-  const isAuthenticated = () => {
-    return !!localStorage.getItem('token');
-  };
+  const isAuthenticated = () => !!localStorage.getItem('token');
   const [isInfoOpen, setInfoOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(isAuthenticated());
 
