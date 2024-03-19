@@ -15,7 +15,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isAuthenticated = () => !!localStorage.getItem('token');
+  const isAuthenticated = () => {
+    return !!localStorage.getItem('token');
+  };
   const [isRegisterOpen, setRegisterOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(isAuthenticated());

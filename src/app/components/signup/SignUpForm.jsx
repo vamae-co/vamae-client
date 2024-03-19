@@ -5,7 +5,11 @@ import config from '@/app/app.config.js'
 export default function RegisterForm() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignUpOpen, setSignUpOpen] = useState(false);
 
+  const toggleSignUp = () => {
+    setSignUpOpen(!isSignUpOpen);
+  }
  const handlePopupInnerClick = (e) => {
     e.stopPropagation();
   }
@@ -14,13 +18,16 @@ export default function RegisterForm() {
     e.preventDefault();
 
     if (!username || !password) {
-      console.error("All fields are necessary.");
+      setError("All fields are necessary.");
       return;
     }
 
     fetch(
         config.uri + "/auth/register", {
           method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify({
             username,
             password,
