@@ -1,0 +1,31 @@
+.connect4-games {
+    height: 100vh;
+    background-color: #8294C4;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "create games";
+}
+
+.creating-game {
+    height: 100%;
+    width: 360px;
+    position: fixed;
+    grid-area: create;
+}
+
+.connect4-games-list {
+    height: 100%;
+    overflow-y: scroll;
+    grid-area: games;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-container {
+    max-height: 120px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background-color: #ACB1D6;
+    padding: 5px 10px 5px 10px;
+    margin: 10px;
+}

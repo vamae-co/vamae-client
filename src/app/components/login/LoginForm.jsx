@@ -19,10 +19,9 @@ export default function RegisterForm() {
     e.preventDefault();
 
     if (!username || !password) {
-      setError("All fields are necessary.");
+      console.error("All fields are necessary.");
       return;
     }
-    console.log("ayayaaa")
     fetch(
         config.uri + "/auth/authenticate", {
           method: "POST",
@@ -42,7 +41,7 @@ export default function RegisterForm() {
           localStorage.getItem('username')
           localStorage.getItem('token')
       })
-      .catch((error)=>console.log("User login failed", error));
+      .catch((error)=>console.error("User login failed ", error));
 
       setTimeout(() => {
         window.location.reload();
@@ -55,7 +54,7 @@ export default function RegisterForm() {
         <h2>Log In</h2>
         <div className='input-boxes'>
             <h3>UserName</h3>
-            <input name='username' onChange={(e) => setUserName(e.target.value)} required type='text'size={50}></input>
+            <input name='username' onChange={(e) => setUserName(e.target.value)} required type='text' size={50}></input>
             <br></br>
             <h3>Password</h3>
             <input name='password' onChange={(e) => setPassword(e.target.value)} required type='password' size={50}></input>

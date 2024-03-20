@@ -121,7 +121,7 @@ export default function RootLayout({
                     <div className={'game-desc'}><span>Poker is a card game that involves betting with chips and keeping a straight face.</span></div>
                 </div>
                 <div className={'game'}>
-                    <div className={'game-name'}><a href="/games/connect4"><span>Connect-4</span></a></div>
+                    <div className={'game-name'}><a href="/games/connect4/games"><span>Connect-4</span></a></div>
                     <div className={'game-desc'}><span>Connect-4 is a game in which the players choose a color and then take turns dropping colored tokens into a six-row, seven-column vertically suspended grid.</span></div>
                 </div>
                 <div className={'game'}>
