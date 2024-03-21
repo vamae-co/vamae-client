@@ -2,11 +2,9 @@
 import { Inter } from "next/font/google"
 import './layout.css'
 import Image from 'next/image'
-import avatar from "./avatar.png"
 import React, { useState, useEffect } from 'react'
 import SignUpForm from './components/signup/SignUpForm'
 import LoginForm from './components/login/LoginForm'
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -94,7 +92,7 @@ export default function RootLayout({
             {loggedIn && (
               <>
                 <div className={'avatar'}>
-                  <Image src={avatar} width={200} height={200} alt="Avatar"/>
+                  <Image src={'/avatar.png'} width={200} height={200} alt="Avatar"/>
                 </div>
                 <span>&#128100;{username}</span><br></br>
                 <span>&#x1F4B0;Money</span>
