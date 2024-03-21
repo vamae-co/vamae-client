@@ -2,9 +2,11 @@
 import { Inter } from "next/font/google"
 import './layout.css'
 import Image from 'next/image'
+import avatar from "./avatar.png"
 import React, { useState, useEffect } from 'react'
 import SignUpForm from './components/signup/SignUpForm'
 import LoginForm from './components/login/LoginForm'
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -99,7 +101,7 @@ export default function RootLayout({
             {loggedIn && (
               <>
                 <div className={'avatar'}>
-                  <Image src={'/avatar.png'} width={200} height={200} alt="Avatar"/>
+                  <Image src={avatar} width={200} height={200} alt="Avatar"/>
                 </div>
                 <span>&#128100;{username}</span><br></br>
                 <span>&#x1F4B0;Money</span>
@@ -126,7 +128,7 @@ export default function RootLayout({
                     <div className={'game-desc'}><span>Poker is a card game that involves betting with chips and keeping a straight face.</span></div>
                 </div>
                 <div className={'game'}>
-                    <div className={'game-name'}><a href="/games/connect4"><span>Connect-4</span></a></div>
+                    <div className={'game-name'}><a href="/games/connect4/games"><span>Connect-4</span></a></div>
                     <div className={'game-desc'}><span>Connect-4 is a game in which the players choose a color and then take turns dropping colored tokens into a six-row, seven-column vertically suspended grid.</span></div>
                 </div>
                 <div className={'game'}>

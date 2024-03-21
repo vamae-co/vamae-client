@@ -1,6 +1,9 @@
+"use client";
+
 import './loginform.css'
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import config from '@/app/app.config.js'
 
 export default function RegisterForm() {
   const [username, setUserName] = useState("");
@@ -19,9 +22,8 @@ export default function RegisterForm() {
         console.error("All fields are necessary.");
       return;
     }
-    console.log(config.uri)
     fetch(
-        process.env.URI + "/auth/authenticate", {
+        config.uri + "/auth/authenticate", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
@@ -39,7 +41,7 @@ export default function RegisterForm() {
           localStorage.getItem('username')
           localStorage.getItem('token')
       })
-      .catch((error)=>console.log("User login failed", error));
+      .catch((error)=>console.error("User login failed ", error));
 
       setTimeout(() => {
          window.location.reload();
@@ -52,7 +54,7 @@ export default function RegisterForm() {
         <h2>Log In</h2>
         <div className='input-boxes'>
             <h3>UserName</h3>
-            <input name='username' onChange={(e) => setUserName(e.target.value)} required type='text'size={50}></input>
+            <input name='username' onChange={(e) => setUserName(e.target.value)} required type='text' size={50}></input>
             <br></br>
             <h3>Password</h3>
             <input name='password' onChange={(e) => setPassword(e.target.value)} required type='password' size={50}></input>
