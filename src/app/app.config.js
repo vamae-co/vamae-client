@@ -1,3 +1,3 @@
 module.exports = {
-    uri: 'http://localhost:8080',
+    uri: 'https://vamae-cc784462a73a.herokuapp.com',
   }

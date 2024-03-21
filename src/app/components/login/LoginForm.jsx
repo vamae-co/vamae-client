@@ -22,7 +22,6 @@ export default function RegisterForm() {
         console.error("All fields are necessary.");
       return;
     }
-    console.log("ayayaaa")
     fetch(
         config.uri + "/auth/authenticate", {
           method: "POST",
