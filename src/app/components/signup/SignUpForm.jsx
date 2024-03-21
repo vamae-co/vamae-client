@@ -21,7 +21,7 @@ export default function RegisterForm() {
       setError("All fields are necessary.");
       return;
     }
-
+    console.log(config.uri)
     fetch(
         config.uri + "/auth/register", {
           method: "POST",
@@ -45,7 +45,7 @@ export default function RegisterForm() {
 
       setTimeout(() => {
         window.location.reload();
-      }, 300);
+      }, 800);
   };
 
   return (

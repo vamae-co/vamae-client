@@ -18,18 +18,25 @@ export default function RootLayout({
   const [username, setUsername] = useState<string>('');
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
+    const storedToken = localStorage.getItem('token')
+    if (storedUsername && storedToken) {
       setUsername(storedUsername);
+      setLoggedIn(true);
     }
   }, []);
 
   const isAuthenticated = () => {
-    return !!localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      return !!localStorage.getItem('token');
+    }
+      return false;
   };
-  const [loggedIn, setLoggedIn] = useState(isAuthenticated());
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [isRegisterOpen, setRegisterOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
+
+  
 
   const toggleRegister = () => {
     setRegisterOpen(!isRegisterOpen);

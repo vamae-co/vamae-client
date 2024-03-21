@@ -1,7 +1,7 @@
 "use client";
 
 import './loginform.css'
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import config from '@/app/app.config.js'
 
@@ -44,8 +44,8 @@ export default function RegisterForm() {
       .catch((error)=>console.error("User login failed ", error));
 
       setTimeout(() => {
-        window.location.reload();
-      }, 300);
+         window.location.reload();
+       }, 800);
   };
 
   return (
