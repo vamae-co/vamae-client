@@ -1,6 +1,5 @@
 import './signupform.css'
 import React, { useState } from "react";
-import config from '@/app/app.config.js'
 
 export default function RegisterForm() {
   const [username, setUserName] = useState("");
@@ -18,12 +17,12 @@ export default function RegisterForm() {
     e.preventDefault();
 
     if (!username || !password) {
-      setError("All fields are necessary.");
+        console.error("All fields are necessary.");
       return;
     }
 
     fetch(
-        config.uri + "/auth/register", {
+        process.env.URI + "/auth/register", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
