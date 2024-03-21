@@ -19,9 +19,10 @@ export default function RegisterForm() {
     e.preventDefault();
 
     if (!username || !password) {
-      console.error("All fields are necessary.");
+        console.error("All fields are necessary.");
       return;
     }
+    console.log("ayayaaa")
     fetch(
         config.uri + "/auth/authenticate", {
           method: "POST",
