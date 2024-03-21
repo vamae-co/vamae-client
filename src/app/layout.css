@@ -1,4 +1,7 @@
 @media screen and (min-width: 1440px) {
+    body {
+        overflow: hidden;
+    }
     header {
         height: 56px;
         background-color: #292929;
@@ -149,6 +152,7 @@
         display: grid;
         grid-template-areas: "profile main games";
         grid-template-rows: 1fr;
+        overflow: hidden;
     }
     
     .profile {
@@ -290,12 +294,18 @@
     
     .main {
         width:1440px;
-        height: 900px;
+        height: calc(100vh - 50px);
         grid-area: main;
         margin: auto;
         margin-top: 50px;
         align-self: center;
         background-color: #FCFCFC;
+        overflow: auto;
+        align-self: start;
+    }
+
+    .main * {
+        overflow: visible !important;
     }
 
     .main h1 {

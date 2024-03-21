@@ -1,7 +1,5 @@
-"use client";
-
 import './loginform.css'
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
@@ -21,7 +19,7 @@ export default function RegisterForm() {
         console.error("All fields are necessary.");
       return;
     }
-    console.log("ayayaaa")
+    console.log(config.uri)
     fetch(
         process.env.URI + "/auth/authenticate", {
           method: "POST",
@@ -44,8 +42,8 @@ export default function RegisterForm() {
       .catch((error)=>console.log("User login failed", error));
 
       setTimeout(() => {
-        window.location.reload();
-      }, 300);
+         window.location.reload();
+       }, 800);
   };
 
   return (
