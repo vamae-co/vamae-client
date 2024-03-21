@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../games/connect4/games/games.css';
+import config from "@/app/app.config"
 
 export default function Connect4GameComponent() {
     const [games, setGames] = useState([]);
@@ -12,7 +13,7 @@ export default function Connect4GameComponent() {
             try {
                 const token = localStorage.getItem('token');
                 console.log('Token:', token);
-                const response = await fetch(process.env.NEXT_PUBLIC_API_URI + "/connect4/games", {
+                const response = await fetch(config.uri + "/connect4/games", {
                     headers: {
                         Authorization: 'Bearer ' + token 
                     }
