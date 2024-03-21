@@ -1,14 +1,27 @@
 'use client'
 
 import './connect4.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Connect4Page() {
   const isAuthenticated = () => {
-    return !!localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      return !!localStorage.getItem('token');
+    }
+      return false;
   };
   const [isInfoOpen, setInfoOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(isAuthenticated());
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState<string>('');
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    const storedToken = localStorage.getItem('token')
+    if (storedUsername && storedToken) {
+      setUsername(storedUsername);
+      setLoggedIn(true);
+    }
+  }, []);
 
   const toggleInfo = () => {
     setInfoOpen(!isInfoOpen);

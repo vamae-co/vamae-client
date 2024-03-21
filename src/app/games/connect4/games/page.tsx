@@ -6,8 +6,12 @@ import config from '@/app/app.config';
 
 export default function Connect4GamesPage() {
 
+
     const isAuthenticated = () => {
-        return !!localStorage.getItem('token');
+        if (typeof window !== 'undefined') {
+            return !!localStorage.getItem('token');
+          }
+        return false;
     };
     const money = 1000;
     const [loggedIn, setLoggedIn] = useState(isAuthenticated());
