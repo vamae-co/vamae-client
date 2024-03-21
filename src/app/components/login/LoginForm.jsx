@@ -3,7 +3,6 @@
 import './loginform.css'
 import React, { useState} from "react";
 import { useRouter } from "next/navigation";
-import config from '@/app/app.config.js'
 
 export default function RegisterForm() {
   const [username, setUserName] = useState("");
@@ -19,11 +18,11 @@ export default function RegisterForm() {
     e.preventDefault();
 
     if (!username || !password) {
-      console.error("All fields are necessary.");
+        console.error("All fields are necessary.");
       return;
     }
     fetch(
-        config.uri + "/auth/authenticate", {
+        process.env.URI + "/auth/authenticate", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
