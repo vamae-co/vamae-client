@@ -1,14 +1,22 @@
 import React, {useEffect, useState} from "react";
-import config from "@/app/app.config";
 import '../games/connect4/games/games.css';
 
 export default function Connect4GameComponent() {
     const [games, setGames] = useState([]);
+    const [gameId, setGameId] = useState([]);
+    const [firstPlayerUsername, setFirstPlayerUsername] = useState([]);
+    const [bet, setBet] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(config.uri + '/connect4/games');
+                const token = localStorage.getItem('token');
+                console.log('Token:', token);
+                const response = await fetch(process.env.NEXT_PUBLIC_API_URI + "/connect4/games", {
+                    headers: {
+                        Authorization: 'Bearer ' + token 
+                    }
+                });
                 if (!response.ok) {
                     console.error('Network response was not ok');
                     return;
@@ -19,7 +27,6 @@ export default function Connect4GameComponent() {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
     }, []);
 
