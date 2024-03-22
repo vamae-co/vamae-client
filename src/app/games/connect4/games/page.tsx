@@ -16,6 +16,7 @@ export default function Connect4GamesPage() {
     const money = 1000;
     const [loggedIn, setLoggedIn] = useState(isAuthenticated());
     const [bet, setBet] = useState(10);
+    const token = localStorage.getItem('token');
 
 
     const afterSubmission = (e : FormEvent<HTMLFormElement>) => {
@@ -23,6 +24,7 @@ export default function Connect4GamesPage() {
             config.uri + "/connect4/game/create", {
                 method: "POST",
                 headers: {
+                    'Authorization': 'Bearer ' + token,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
