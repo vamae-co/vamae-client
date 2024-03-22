@@ -15,7 +15,7 @@ export default function Connect4GameComponent() {
                 console.log('Token:', token);
                 const response = await fetch(config.uri + "/connect4/games", {
                     headers: {
-                        Authorization: 'Bearer ' + token 
+                        'Authorization': 'Bearer ' + token
                     }
                 });
                 if (!response.ok) {
