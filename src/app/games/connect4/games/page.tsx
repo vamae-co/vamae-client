@@ -1,5 +1,5 @@
 'use client'
-import React, {FormEvent, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Connect4GameComponent from "@/app/components/Connect4GameComponent";
 import './games.css'
 import config from '@/app/app.config';
@@ -15,29 +15,38 @@ export default function Connect4GamesPage() {
     };
     const money = 1000;
     const [loggedIn, setLoggedIn] = useState(isAuthenticated());
-    const [bet, setBet] = useState(10);
-    const token = localStorage.getItem('token');
+    const [bet, setBet] = useState();
+    const [token, setToken] = useState("");
 
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if(storedToken) {
+            setToken(storedToken);
+        }
+    }, []);
 
-    const afterSubmission = (e : FormEvent<HTMLFormElement>) => {
-        fetch(
-            config.uri + "/connect4/game/create", {
-                method: "POST",
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    "columns" : 7,
-                    "rows" : 6,
-                    bet
-                })
-            }
-        )
-            .then ((response)=>response.json())
-            .catch((error)=>console.error(error));
-
-        alert("approve");
+    const afterSubmission = () => {
+        if(loggedIn) {
+            fetch(
+                config.uri + "/connect4/game/create", {
+                    method: "POST",
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "columns" : 7,
+                        "rows" : 6,
+                        bet
+                    })
+                }
+            )
+                .then ((response)=>response.json())
+                .catch((error)=>console.error(error));
+        }
+        else {
+            console.error("User is not authenticated!");
+        }
     }
 
     return (
