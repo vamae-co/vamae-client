@@ -27,11 +27,12 @@ export default function Connect4GamesPage() {
 
     const afterSubmission = () => {
         if(loggedIn) {
+            console.log(token);
             fetch(
                 config.uri + "/connect4/game/create", {
                     method: "POST",
                     headers: {
-                        'Authorization': 'Bearer ' + token,
+                        'Authentication': 'Bearer ' + token,
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
