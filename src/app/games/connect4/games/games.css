@@ -3,6 +3,8 @@ body {
 }
 
 .connect4-games {
+    overflow: scroll !important;
+    padding: 32px 16px;
     height: 100%;
     background-color: #8294C4;
     display: grid;
