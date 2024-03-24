@@ -44,7 +44,7 @@ export default function RegisterForm() {
         <h2>Sign Up</h2>
         <div className='input-boxes'>
             <h3>UserName</h3>
-            <input name='username' onChange={(e) => setUserName(e.target.value)} required type='text'size={50}></input>
+            <input name='username' onChange={(e) => setUserName(e.target.value)} required type='text' size={50}></input>
             <br></br>
             <h3>Password</h3>
             <input name='password' onChange={(e) => setPassword(e.target.value)} required type='password' size={50}></input>
