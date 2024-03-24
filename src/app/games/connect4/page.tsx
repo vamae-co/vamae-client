@@ -2,6 +2,7 @@
 
 import './connect4.css'
 import React, { useState, useEffect } from 'react'
+import config from "@/app/app.config";
 
 export default function Connect4Page() {
   const isAuthenticated = () => {
@@ -13,6 +14,7 @@ export default function Connect4Page() {
   const [isInfoOpen, setInfoOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState<string>('');
+  const [token, setToken] = useState<string>('');
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -20,8 +22,40 @@ export default function Connect4Page() {
     if (storedUsername && storedToken) {
       setUsername(storedUsername);
       setLoggedIn(true);
+      setToken(storedToken);
     }
   }, []);
+
+  //Mocked object
+  const table = [
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, "PLAYER_2"],
+      [null, null, null, null, "PLAYER_1", "PLAYER_1"],
+      [null, null, null, "PLAYER_1", "PLAYER_1", "PLAYER_1"],
+      [null, null, "PLAYER_2", "PLAYER_1", "PLAYER_1", "PLAYER_1"]
+  ];
+
+  const paintTable = () => {
+      for(let x = 0; x < 7; x++) {
+          for(let y = 0; y < 6; y++) {
+              if(table[x][y] == "PLAYER_1") {
+                  let div = document.getElementById(`${x}-${y}`);
+                  if(div != null) {
+                      div.style.backgroundColor = '#CD5D7D';
+                  }
+              }
+              else if(table[x][y] == "PLAYER_2") {
+                  let div = document.getElementById(`${x}-${y}`);
+                  if(div != null) {
+                      div.style.backgroundColor = '#F6D186';
+                  }
+              }
+          }
+      }
+  }
+
 
   const toggleInfo = () => {
     setInfoOpen(!isInfoOpen);
@@ -30,7 +64,7 @@ export default function Connect4Page() {
     event.stopPropagation();
   }
   return (
-    <div className='connect4-background'>
+    <div className='connect4-background' onClick={paintTable}> {/*example usage of function*/}
       {loggedIn && (
           <>
           <div onClick={toggleInfo} className='info'>
@@ -78,68 +112,68 @@ export default function Connect4Page() {
       <div className='board'>
         <div className='innerboard'>
             <div className='column'>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
+                <div className='slot' id={'0-0'}></div>
+                <div className='slot' id={'0-1'}></div>
+                <div className='slot' id={'0-2'}></div>
+                <div className='slot' id={'0-3'}></div>
+                <div className='slot' id={'0-4'}></div>
+                <div className='slot' id={'0-5'}></div>
             </div>
             <div className='column'>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
+                <div className='slot' id={'1-0'}></div>
+                <div className='slot' id={'1-1'}></div>
+                <div className='slot' id={'1-2'}></div>
+                <div className='slot' id={'1-3'}></div>
+                <div className='slot' id={'1-4'}></div>
+                <div className='slot' id={'1-5'}></div>
             </div>
             <div className='column'>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
+                <div className='slot' id={'2-0'}></div>
+                <div className='slot' id={'2-1'}></div>
+                <div className='slot' id={'2-2'}></div>
+                <div className='slot' id={'2-3'}></div>
+                <div className='slot' id={'2-4'}></div>
+                <div className='slot' id={'2-5'}></div>
             </div>
             <div className='column'>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
+                <div className='slot' id={'3-0'}></div>
+                <div className='slot' id={'3-1'}></div>
+                <div className='slot' id={'3-2'}></div>
+                <div className='slot' id={'3-3'}></div>
+                <div className='slot' id={'3-4'}></div>
+                <div className='slot' id={'3-5'}></div>
             </div>
             <div className='column'>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
+                <div className='slot' id={'4-0'}></div>
+                <div className='slot' id={'4-1'}></div>
+                <div className='slot' id={'4-2'}></div>
+                <div className='slot' id={'4-3'}></div>
+                <div className='slot' id={'4-4'}></div>
+                <div className='slot' id={'4-5'}></div>
             </div>
             <div className='column'>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
+                <div className='slot' id={'5-0'}></div>
+                <div className='slot' id={'5-1'}></div>
+                <div className='slot' id={'5-2'}></div>
+                <div className='slot' id={'5-3'}></div>
+                <div className='slot' id={'5-4'}></div>
+                <div className='slot' id={'5-5'}></div>
             </div>
             <div className='column'>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
-              <div className='slot'></div>
+                <div className='slot' id={'6-0'}></div>
+                <div className='slot' id={'6-1'}></div>
+                <div className='slot' id={'6-2'}></div>
+                <div className='slot' id={'6-3'}></div>
+                <div className='slot' id={'6-4'}></div>
+                <div className='slot' id={'6-5'}></div>
             </div>
-        </div>   
+        </div>
       </div>
           </>
       )}
-      {!loggedIn && (
-        <h1>You need to log in!</h1>
-      )}
+        {!loggedIn && (
+            <h1>You need to log in!</h1>
+        )}
     </div>
   )
 }

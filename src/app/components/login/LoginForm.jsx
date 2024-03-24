@@ -3,7 +3,7 @@
 import './loginform.css'
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import config from '@/app/app.config.js'
+import { logIn } from '@/service/api'
 
 export default function RegisterForm() {
   const [username, setUserName] = useState("");
@@ -22,26 +22,15 @@ export default function RegisterForm() {
         console.error("All fields are necessary.");
       return;
     }
-    fetch(
-        config.uri + "/auth/authenticate", {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username,
-            password,
-          })
+
+    logIn({username, password}).then(
+        (token) => {
+            if(token) {
+                localStorage.setItem('username', username)
+                localStorage.setItem('token', token)
+            }
         }
-      )
-      .then ((response)=>response.json())
-      .then ((body)=>{
-          localStorage.setItem('username', username)
-          localStorage.setItem('token', body.token)
-          localStorage.getItem('username')
-          localStorage.getItem('token')
-      })
-      .catch((error)=>console.error("User login failed ", error));
+    );
 
       setTimeout(() => {
          window.location.reload();
