@@ -1,6 +1,6 @@
 import './signupform.css'
 import React, { useState } from "react";
-import config from '@/app/app.config.js'
+import { signUp } from "@/service/api";
 
 export default function RegisterForm() {
   const [username, setUserName] = useState("");
@@ -21,27 +21,17 @@ export default function RegisterForm() {
       console.error("All fields are necessary.");
       return;
     }
-    console.log(config.uri)
-    fetch(
-        config.uri + "/auth/register", {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username,
-            password,
-          })
-        }
-      )
-      .then ((response)=>response.json())
-      .then ((body)=>{
-          localStorage.setItem('username', username)
-          localStorage.setItem('token', body.token)
-          localStorage.getItem('username')
-          localStorage.getItem('token')
-      })
-      .catch((error)=>console.log("User sign up failed", error));
+
+      signUp({username, password}).then(
+          (token) => {
+              if(token) {
+                  localStorage.setItem('username', username)
+                  localStorage.setItem('token', token)
+                  localStorage.getItem('username')
+                  localStorage.getItem('token')
+              }
+          }
+      );
 
       setTimeout(() => {
         window.location.reload();

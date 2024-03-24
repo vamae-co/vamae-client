@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Connect4GameComponent from "@/app/components/Connect4GameComponent";
 import './games.css'
-import config from '@/app/app.config';
+import {createGame} from "@/service/api";
 
 export default function Connect4GamesPage() {
 
@@ -17,6 +17,8 @@ export default function Connect4GamesPage() {
     const [loggedIn, setLoggedIn] = useState(isAuthenticated());
     const [bet, setBet] = useState();
     const [token, setToken] = useState("");
+    const columns = 7;
+    const rows = 6;
 
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
@@ -27,23 +29,7 @@ export default function Connect4GamesPage() {
 
     const afterSubmission = () => {
         if(loggedIn) {
-            console.log(token);
-            fetch(
-                config.uri + "/connect4/game/create", {
-                    method: "POST",
-                    headers: {
-                        'Authentication': 'Bearer ' + token,
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        "columns" : 7,
-                        "rows" : 6,
-                        bet
-                    })
-                }
-            )
-                .then ((response)=>response.json())
-                .catch((error)=>console.error(error));
+            const data = createGame({columns, rows, bet, token});
         }
         else {
             console.error("User is not authenticated!");
