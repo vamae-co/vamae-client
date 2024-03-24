@@ -2,7 +2,6 @@
 
 import './connect4.css'
 import React, { useState, useEffect } from 'react'
-import config from "@/app/app.config";
 
 export default function Connect4Page() {
   const isAuthenticated = () => {
