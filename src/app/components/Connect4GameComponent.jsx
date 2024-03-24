@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../games/connect4/games/games.css';
-import config from "@/app/app.config"
+import {getAllGames} from "@/service/api";
 
 export default function Connect4GameComponent() {
     const [games, setGames] = useState([]);
@@ -12,18 +12,9 @@ export default function Connect4GameComponent() {
         const fetchData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                console.log('Token:', token);
-                const response = await fetch(config.uri + "/connect4/games", {
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    }
-                });
-                if (!response.ok) {
-                    console.error('Network response was not ok');
-                    return;
-                }
-                const data = await response.json();
-                setGames(data);
+                const responseData = await getAllGames({token});
+
+                setGames(responseData);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

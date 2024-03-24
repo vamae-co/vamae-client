@@ -27,8 +27,6 @@ export default function RegisterForm() {
               if(token) {
                   localStorage.setItem('username', username)
                   localStorage.setItem('token', token)
-                  localStorage.getItem('username')
-                  localStorage.getItem('token')
               }
           }
       );

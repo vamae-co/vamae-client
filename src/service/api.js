@@ -19,7 +19,7 @@ export async function logIn({username, password}) {
             password
         }
     });
-    if(loginResponse.status !== 200 || !loginResponse.data.token) {
+    if(loginResponse.status !== 200) {
         console.error("User login failed!");
         return null;
     }
@@ -35,7 +35,7 @@ export async function signUp({username, password}) {
             password
         }
     });
-    if(signUpResponse.status !== 200 || !signUpResponse.data.token) {
+    if(signUpResponse.status !== 200) {
         console.error("User sign up failed!");
         return null;
     }
@@ -47,7 +47,7 @@ export async function createGame({columns, rows, bet, token}) {
         method: "POST",
         url: '/connect4/game/create',
         headers: {
-            'Authentication': 'Bearer ' + token,
+            'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json',
         },
         data: {
@@ -56,9 +56,25 @@ export async function createGame({columns, rows, bet, token}) {
             bet
         }
     });
-    if (createConnect4GameResponse.status !== 200 || !createConnect4GameResponse.data) {
+    if (createConnect4GameResponse.status !== 200) {
         console.error("Game creating failed!");
         return null;
     }
     return createConnect4GameResponse?.data;
+}
+
+export async function getAllGames({token}) {
+    const getConnect4GamesResponse = await http({
+        method: "GET",
+        url: '/connect4/games',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
+        }
+    });
+    if (getConnect4GamesResponse.status !== 200) {
+        console.error("Games fetching failed!");
+        return null;
+    }
+    return getConnect4GamesResponse?.data;
 }
