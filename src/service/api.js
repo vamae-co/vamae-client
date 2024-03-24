@@ -78,3 +78,19 @@ export async function getAllGames({token}) {
     }
     return getConnect4GamesResponse?.data;
 }
+
+export async function getGameById({gameId, token}) {
+    const getConnect4GamesResponse = await http({
+        method: "GET",
+        url: `/connect4/game/${gameId}`,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
+        }
+    });
+    if (getConnect4GamesResponse.status !== 200) {
+        console.error("Games fetching failed!");
+        return null;
+    }
+    return getConnect4GamesResponse?.data;
+}
