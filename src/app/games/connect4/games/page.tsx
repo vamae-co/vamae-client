@@ -1,8 +1,16 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import Connect4GameComponent from "@/app/components/Connect4GameComponent";
 import './games.css'
 import {createGame} from "@/service/api";
+import {z} from 'zod';
+
+const FormSchema = z.object({
+    columns: z.number(),
+    rows: z.number(),
+    bet: z.coerce.number(),
+    token: z.string()
+});
 
 export default function Connect4GamesPage() {
 
@@ -15,7 +23,7 @@ export default function Connect4GamesPage() {
     };
     const money = 1000;
     const [loggedIn, setLoggedIn] = useState(isAuthenticated());
-    const [bet, setBet] = useState();
+    const [bet, setBet] = useState(10);
     const [token, setToken] = useState("");
     const columns = 7;
     const rows = 6;
@@ -27,9 +35,15 @@ export default function Connect4GamesPage() {
         }
     }, []);
 
-    const afterSubmission = () => {
+    function afterSubmission(e : FormData) {
+        const request = FormSchema.parse({
+            columns,
+            rows,
+            bet: e.get("bet"),
+            token
+        })
         if(loggedIn) {
-            const data = createGame({columns, rows, bet, token});
+            const data = createGame(request);
         }
         else {
             console.error("User is not authenticated!");
@@ -39,7 +53,7 @@ export default function Connect4GamesPage() {
     return (
         <div className={"connect4-games"}>
             <div className={"creating-game"}>
-                <form onSubmit={afterSubmission}>
+                <form action={afterSubmission}>
                     <input name='bet' required type='number' min={10} max={money} defaultValue={10}></input>
                     <button type="submit">Submit</button>
                 </form>
