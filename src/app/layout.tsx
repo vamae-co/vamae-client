@@ -2,6 +2,7 @@
 import { Inter } from "next/font/google"
 import './layout.css'
 import Image from 'next/image'
+import logo from './logo.svg'
 import avatar from "./avatar.png"
 import React, { useState, useEffect } from 'react'
 import SignUpForm from './components/signup/SignUpForm'
@@ -62,12 +63,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <header>
         <div className={'logo'}>
-          <h1>VAMAEcologo</h1>
+          <h1>VAMAE-CO</h1>
         </div>    
         <div className={'header-buttons'}>
             <a href="/news"><button>News</button></a>
             <a href="/indev"><button>Currency</button></a>
-            <a href="/indev"><button>About us</button></a>
+            <a href="/about"><button>About us</button></a>
             <a href="/indev"><button>Support us</button></a>
             <a href="/indev"><button>Contacts</button></a>
         </div>         
