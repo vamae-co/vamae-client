@@ -1,3 +1,9 @@
+@font-face {
+    font-family: logoFont;
+    src: 
+        url(./fonts/kongtext.regular.ttf);
+}
+
 @media screen and (min-width: 1440px) {
     body {
         overflow: hidden;
@@ -72,14 +78,17 @@
     
     .logo {
         grid-area: logo;
-        margin-left: 5%;
-        margin-top: 0%;
-        width: 170px;
+        margin-left: 8%;
+        margin-top: -5%;
+        width: 1%;
         order: 1;
+        color: #774948;
     }
     
     .logo h1{
-        font-size: 24px;
+        font-size: 22px;
+        font-family: logoFont;
+        margin-left: 5%;
     }
     .sign-in-button {
         color:#F8C462;
@@ -303,11 +312,6 @@
         overflow: auto;
         align-self: start;
     }
-
-    .main * {
-        overflow: visible !important;
-    }
-
     .main h1 {
        text-align: center;
     }
